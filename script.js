@@ -13,11 +13,11 @@ function updateSecondSelect() {
     if(selectedValue == 1){
         total = 2
     } else if (selectedValue == 2){
-        total = 4
+        total = 3
     } else if (selectedValue == 3){
-        total = 7
+        total = 6
     }else if (selectedValue == 4){
-        total = 11
+        total = 10
     } else if (selectedValue == 5){
         total = 16
     }
@@ -43,12 +43,12 @@ function updateCardArt() {
 
     // Define a mapping of values to image file paths
     var imageMap = {
-        "wei": "cards/wei.png",
-        "nineveh": "cards/nineveh.png",
-        "azena": "cards/azena.png",
-        "balthor": "cards/balthor.png",
-        "kadan": "cards/kadan.png",
-        "thirain": "cards/thirain.png"
+        "Wei": "cards/wei.png",
+        "Nineveh": "cards/nineveh.png",
+        "Azena": "cards/azena.png",
+        "Balthor": "cards/balthor.png",
+        "Kadan": "cards/kadan.png",
+        "Thirain": "cards/thirain.png"
     };
 
     // Set the image source based on the selected value
@@ -59,6 +59,37 @@ function updateCardArt() {
     }
 }
 
+function updateStars() {
+    // Get the selected value and convert it to a number
+    const selectedValue = parseInt(select.value);
+    const excessValue = parseInt(excess.value);
+
+    if(selectedValue == 1){
+        total = 2
+    } else if (selectedValue == 2){
+        total = 4
+    } else if (selectedValue == 3){
+        total = 7
+    }else if (selectedValue == 4){
+        total = 11
+    } else if (selectedValue == 5){
+        total = 16
+    }
+
+    total+= excessValue;
+    const result = 16 - total;
+    var selector = document.getElementById("cardSelect");
+    var card = selector.value;
+
+
+    if(result <= 0) {
+        resultElement.textContent = `Congratulations! You closed this.`;    
+    }
+    else{
+        resultElement.textContent = `To complete ${card} you need ${result} cards`;
+    }
+
+}
 
 // Get the select element
 const select = document.getElementById("numberSelect");
@@ -68,35 +99,5 @@ const resultElement = document.getElementById("result");
 // Add an event listener to the select element
 [ select, excess ].forEach(function(e) {
     e.addEventListener("change", function () {
-        // Get the selected value and convert it to a number
-        const selectedValue = parseInt(select.value);
-        const excessValue = parseInt(excess.value);
-
-        if(selectedValue == 1){
-            total = 2
-        } else if (selectedValue == 2){
-            total = 4
-        } else if (selectedValue == 3){
-            total = 7
-        }else if (selectedValue == 4){
-            total = 11
-        } else if (selectedValue == 5){
-            total = 16
-        }
-
-        total+= excessValue;
-        const result = 16 - total;
-        var selector = document.getElementById("cardSelect");
-        return string.charAt(0).toUpperCase() + string.slice(1);
-        var card = selector.value.toUpperCase();
-        
-
-        if(result <= 0) {
-            resultElement.textContent = `Congratulations! You closed this.`;    
-        }
-        else{
-            resultElement.textContent = `To complete ${card} you need ${result} cards`;
-        }
-
-    });
+        updateStars();})
 });

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="card-container">
+
+        <div class="card">
+            <select id="cardSelect" onchange="updateCardArt()">
+                <option value="" disabled selected>Select card</option>
+                <option value="wei">Wei</option>
+                <option value="nineveh">Nineveh</option>
+                <option value="azena">Azena & Inana</option>
+                <option value="balthor">Balthor</option>
+                <option value="kadan">Kadan</option>
+                <option value="thirain">Thirain</option>
+            </select><br>
+            <img id="cardArt" class="cardArt" src="./card.jpg">
+            <br>
+            <label for="numberSelect">Stars</label>
+            <select id="numberSelect" onchange="updateSecondSelect()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label for="excess">Excess cards</label>
+            <select id="excess">
+                <option value="0">0</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <p id="result"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
